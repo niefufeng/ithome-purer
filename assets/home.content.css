@@ -1,0 +1,104 @@
+@import "./common.content.css";
+
+#news {
+  @apply !pt-0;
+  & > .fl {
+    @apply hidden;
+  }
+}
+
+#nnews {
+  @apply !w-full;
+  .t-h {
+    @apply hidden;
+  }
+  .t-b {
+    @apply !mx-0 !grid !w-full !grid-cols-2 gap-x-6;
+    &.sel {
+      @apply !pt-8;
+    }
+    .nl {
+      @apply !m-0 w-full;
+      li {
+        @apply flex !h-10 gap-4 px-2;
+        a {
+          @apply !h-10 !w-auto flex-1 overflow-hidden !px-0 !leading-10 !text-gray-600 visited:!text-gray-400;
+        }
+        b,
+        i {
+          @apply !h-10 w-12 !leading-10;
+        }
+        &.t {
+          @apply pl-5;
+        }
+        &:not(.t) {
+          a {
+            @apply !pl-0;
+            &::before {
+              @apply hidden;
+            }
+          }
+        }
+        &:hover {
+          @apply bg-gray-100;
+          a {
+            @apply !relative !mt-0 !border-none !bg-transparent;
+          }
+        }
+      }
+    }
+  }
+  #n-p {
+    @apply hidden;
+  }
+}
+
+/* 测评、手机、电脑等一排有五张图片咨询的内容 */
+body > .bl.bb,
+#cp {
+  @apply grid grid-cols-6 gap-x-1 gap-y-4 lg:gap-x-2;
+  /* 标题，占整行 */
+  .t-h {
+    @apply col-span-6 flex items-center justify-between;
+  }
+  /* t-b 为图文 */
+  .t-b {
+    @apply col-span-6 !mt-0 !grid grid-cols-5 !gap-2 lg:!gap-4;
+    /* 单个测评 */
+    .pb {
+      @apply !m-0 !w-full;
+      .img {
+        /* 封面图 */
+        @apply !w-full rounded;
+        img {
+          @apply !m-0 !w-full !object-cover;
+        }
+      }
+    }
+  }
+
+  /* nl 为文字新闻列表 */
+  .nl {
+    @apply col-span-2 !m-0 flex !w-full flex-col;
+    li {
+      @apply relative flex h-auto items-center gap-0 lg:gap-1;
+      &.h {
+        @apply pb-2;
+      }
+      &:not(.h) {
+        @apply overflow-hidden rounded !px-1 hover:bg-orange-100 lg:!px-2 dark:text-neutral-400 dark:hover:bg-neutral-800;
+      }
+      a {
+        @apply m-0 flex-1 overflow-hidden border border-solid border-transparent !px-0 py-1 pl-2 leading-8 text-ellipsis 2xl:h-auto;
+        &::before {
+          display: none !important;
+        }
+      }
+      &:hover {
+        a {
+          @apply relative m-0 !h-auto min-w-0 !bg-transparent py-1 pr-0 pl-2 leading-8;
+        }
+      }
+    }
+  }
+}

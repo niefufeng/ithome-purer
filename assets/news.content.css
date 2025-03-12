@@ -1,0 +1,76 @@
+@import "./common.content.css";
+
+#dt {
+  /* 面包蟹导航 */
+  .cv {
+    @apply hidden;
+  }
+  h1 {
+    @apply !m-0;
+  }
+  & > .fl {
+    @apply !w-full;
+    /* 新闻主体 */
+    .post_content {
+      @apply prose prose-gray dark:prose-invert prose-a:no-underline dark:prose-a:text-neutral-200 prose-li:my-0 !max-w-none;
+      ul {
+        @apply !p-0 !pl-4;
+        li {
+          padding-inline-start: 1.2em;
+          p {
+            @apply !my-2;
+          }
+        }
+      }
+    }
+  }
+  /* 右侧新闻排行榜、相关新闻 */
+  & > .fr {
+    @apply !hidden;
+  }
+
+  /* 投诉水文、我要纠错等按钮的 warpper */
+  .newserror {
+    button {
+      @apply bg-neutral-100;
+    }
+  }
+
+  /* 相关文章 */
+  .related_post {
+    .list_3 {
+      @apply grid !w-full grid-cols-2 gap-x-4 gap-y-1;
+      li {
+        @apply !m-0 !h-10 !w-full;
+        &::before {
+          @apply hidden;
+        }
+        a {
+          @apply !h-10 !w-full px-2 !leading-10 text-gray-600 hover:bg-gray-100;
+        }
+      }
+    }
+  }
+}
+
+/* 大家在看 */
+iframe.dajia {
+  @apply !w-full;
+}
+#dajia {
+  @apply !w-full;
+  .dajia {
+    @apply !h-auto !w-full;
+    .list_1 {
+      @apply grid !w-full grid-cols-5 gap-6;
+      li {
+        @apply !m-0 !w-full;
+        .postimg {
+          img {
+            @apply box-border !h-auto !w-full rounded;
+          }
+        }
+      }
+    }
+  }
+}

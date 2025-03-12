@@ -1,0 +1,8 @@
+---
+description: git commit
+globs: 
+alwaysApply: false
+---
+- `message` should follow the format `type(scope): title`
+- Different features should be committed separately whenever possible
+- For dependency version upgrades or downgrades, the `message` details should list which version was upgraded/downgraded from and to

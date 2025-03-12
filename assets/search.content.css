@@ -1,0 +1,50 @@
+@import "./common.content.css";
+
+#list {
+  & > .fl {
+    @apply !w-full;
+    .bl {
+      @apply flex flex-col gap-y-8 py-10;
+      li {
+        @apply !mt-0 flex !h-48 gap-8 overflow-hidden rounded bg-gray-50 pr-4 transition-all;
+        & > a {
+          @apply !h-full !w-60;
+          img {
+            @apply !h-full !w-full;
+          }
+        }
+        & > div {
+          @apply !float-none flex flex-1 flex-col justify-between gap-y-2 py-2;
+          h2 {
+            @apply !m-0 !h-auto !w-full !leading-8;
+            a {
+              @apply !text-gray-600;
+            }
+          }
+          .m {
+            @apply flex-1 !text-gray-500;
+          }
+          .o {
+            @apply flex h-8 items-center justify-between gap-8;
+            .tags {
+              @apply flex h-8 flex-1 items-center gap-2 !text-[0px];
+              strong {
+                @apply hidden;
+              }
+              a {
+                @apply bg-gray-200/50 px-4 py-2 text-sm text-nowrap before:pr-1 before:content-["#"];
+              }
+            }
+            .d {
+              @apply h-8 !w-18 leading-8;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* 右侧新闻排行榜、相关新闻 */
+  & > .fr {
+    @apply !hidden;
+  }
+}

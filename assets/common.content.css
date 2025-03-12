@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部导航 */
+#top {
+  .fl {
+    display: none;
+  }
+  /* 右侧除了登录按钮都隐藏 */
+  .fr > :not(#toplogin) {
+    display: none;
+  }
+}
+
+/* 导航栏 */
+#nav {
+  @apply flex justify-center;
+  height: auto !important;
+  .fl {
+    display: none;
+  }
+  .fr {
+    .search {
+      @apply flex h-12 w-full overflow-hidden rounded !border-none;
+      input {
+        @apply !box-border h-12 flex-1 rounded rounded-r-none border border-r-0 border-gray-300 px-4 py-2 focus:border-red-600;
+      }
+      button {
+        @apply !relative !top-0 !right-0 !float-none box-border h-12 w-20 rounded rounded-l-none border border-l-0 border-red-600 bg-red-600;
+      }
+      &:hover {
+        input,
+        button {
+          @apply border-red-600;
+        }
+      }
+    }
+    .hotkeyword {
+      @apply !ml-0 w-full;
+    }
+  }
+}
+
+#tt {
+  a {
+    @apply !text-gray-600;
+  }
+}
+
+#side_func {
+  & > .app,
+  & > .sideweixin,
+  & > .tougao {
+    @apply !hidden;
+  }
+}
