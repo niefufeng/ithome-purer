@@ -22,7 +22,7 @@
       li {
         @apply flex !h-10 gap-4 px-2;
         a {
-          @apply !h-10 !w-auto flex-1 overflow-hidden !px-0 !leading-10 !text-gray-600 visited:!text-gray-400;
+          @apply !h-10 !w-auto flex-1 overflow-hidden !px-0 !leading-10 !text-neutral-600 visited:!text-neutral-300 dark:!text-neutral-400 dark:visited:!text-neutral-500;
         }
         b,
         i {
@@ -40,7 +40,7 @@
           }
         }
         &:hover {
-          @apply bg-gray-100;
+          @apply bg-neutral-50 dark:bg-neutral-700;
           a {
             @apply !relative !mt-0 !border-none !bg-transparent;
           }

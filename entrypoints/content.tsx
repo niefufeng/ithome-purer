@@ -1,6 +1,4 @@
-import type { ContentScriptContext } from "wxt/client";
 import "~/assets/home.content.css";
-import ReactDOM from "react-dom/client";
 
 export default defineContentScript({
   matches: ["*://*.ithome.com/"],

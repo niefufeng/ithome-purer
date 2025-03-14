@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   display: flex;
   flex-direction: column;
@@ -28,10 +30,10 @@ body {
     .search {
       @apply flex h-12 w-full overflow-hidden rounded !border-none;
       input {
-        @apply !box-border h-12 flex-1 rounded rounded-r-none border border-r-0 border-gray-300 px-4 py-2 focus:border-red-600;
+        @apply !box-border h-12 flex-1 rounded rounded-r-none border border-r-0 border-neutral-300 px-4 py-2 focus:border-red-600 dark:border-neutral-600 dark:focus:border-red-700;
       }
       button {
-        @apply !relative !top-0 !right-0 !float-none box-border h-12 w-20 rounded rounded-l-none border border-l-0 border-red-600 bg-red-600;
+        @apply !relative !top-0 !right-0 !float-none box-border h-12 w-20 rounded rounded-l-none border border-l-0 border-red-600 bg-red-600 !text-lg dark:border-red-700 dark:bg-red-700;
       }
       &:hover {
         input,
@@ -48,7 +50,7 @@ body {
 
 #tt {
   a {
-    @apply !text-gray-600;
+    @apply !text-neutral-600 dark:!text-neutral-400;
   }
 }
 
