@@ -11,6 +11,6 @@ export default defineConfig({
   manifest: {
     name: "ithome purer",
     description: "纯净 ithome，专注内容",
-    version: "1.0.0",
+    version: "1.0.1",
   },
 });
