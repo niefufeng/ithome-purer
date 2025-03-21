@@ -1,0 +1,69 @@
+# 发布工作流
+# 用于自动构建和发布 Chrome/Firefox 扩展
+# 当推送新的版本标签时触发
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*" # 触发条件：推送以 v 开头的tag
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # 添加并发限制，确保同时只运行一个发布作业
+    concurrency:
+      group: release-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      # 检出代码
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整的 git 历史用于生成更新日志
+
+      # 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "23"
+
+      # 设置 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      # 安装项目依赖
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # 使用 --frozen-lockfile 确保依赖版本一致性
+
+      # 从配置文件获取版本号
+      - name: Get version from wxt.config.ts
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./wxt.config.ts').default.manifest.version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      # 构建 Chrome 扩展
+      - name: Build chrome extension
+        run: pnpm zip
+
+      # 构建 Firefox 扩展
+      - name: Build firefox extension
+        run: pnpm zip:firefox
+
+      # 创建 GitHub Release
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            .output/ithome-purer-${{ steps.get_version.outputs.version }}-chrome.zip
+            .output/ithome-purer-${{ steps.get_version.outputs.version }}-firefox.zip
+          generate_release_notes: true # 自动生成发布说明
+          draft: false # 直接发布，不创建草稿
+          prerelease: false # 标记为正式版本
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
