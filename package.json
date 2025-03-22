@@ -2,7 +2,7 @@
   "name": "ithome-purer",
   "description": "ithome purer",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.15",
-    "@types/chrome": "^0.0.309",
+    "@types/chrome": "^0.0.310",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.2",
     "@wxt-dev/auto-icons": "^1.0.2",

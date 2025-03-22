@@ -17,6 +17,10 @@ body {
   .fr > :not(#toplogin) {
     display: none;
   }
+  /* 登录之后的用户名下拉 */
+  .bb > div div.mt .mu li {
+    height: 70px !important;
+  }
 }
 
 /* 导航栏 */
